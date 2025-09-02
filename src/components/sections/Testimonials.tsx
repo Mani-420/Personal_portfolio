@@ -140,7 +140,7 @@ const Testimonials = () => {
 
         {/* Testimonials Grid (for larger screens) */}
         <StaggeredContainer staggerDelay={150} className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.slice(0, 3).map((testimonial, index) => (
+          {testimonials.slice(0, 3).map((testimonial) => (
             <div
               key={testimonial.id}
               className="bg-white dark:bg-dark-700 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-dark-600 hover:shadow-2xl transition-all duration-300 ease-out hover:scale-105 cursor-pointer hover:-translate-y-1"

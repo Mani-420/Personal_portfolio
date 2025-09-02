@@ -101,88 +101,88 @@ const Skills = () => {
           </div>
         </AnimatedElement>
 
-                 {/* Skills Grid */}
-         <StaggeredContainer staggerDelay={80} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                       {filteredSkills.map((skill, index) => (
-                              <div
-                  key={skill.name}
-                  className="bg-white dark:bg-dark-700 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-dark-600 text-center group hover:shadow-2xl transition-all duration-300 ease-out hover:scale-105 cursor-pointer hover:-translate-y-1"
-                >
-               <div className="text-4xl mb-4 transition-transform duration-200 group-hover:scale-110">
-                 {getSkillIcon(skill.name)}
-               </div>
-               <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                 {skill.name}
-               </h3>
-               
-               {/* Proficiency Percentage */}
-               <div className="text-right mb-2">
-                 <span className="text-sm font-medium text-primary-600 dark:text-primary-400">
-                   {skill.proficiency}%
-                 </span>
-               </div>
-               
-               {/* Proficiency Bar */}
-               <div className="w-full bg-gray-200 dark:bg-dark-600 rounded-full h-2 mb-3 overflow-hidden">
-                 <div
-                   className="h-2 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 transition-all duration-1000 ease-out"
-                   style={{ 
-                     width: barsAnimated ? `${skill.proficiency}%` : '0%'
-                   }}
-                 ></div>
-               </div>
-               
-               <p className="text-sm text-gray-600 dark:text-gray-400">
-                 Proficiency Level
-               </p>
-             </div>
-           ))}
-         </StaggeredContainer>
+        {/* Skills Grid */}
+        <StaggeredContainer staggerDelay={80} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {filteredSkills.map((skill) => (
+            <div
+              key={skill.name}
+              className="bg-white dark:bg-dark-700 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-dark-600 text-center group hover:shadow-2xl transition-all duration-300 ease-out hover:scale-105 cursor-pointer hover:-translate-y-1"
+            >
+              <div className="text-4xl mb-4 transition-transform duration-200 group-hover:scale-110">
+                {getSkillIcon(skill.name)}
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
+                {skill.name}
+              </h3>
+              
+              {/* Proficiency Percentage */}
+              <div className="text-right mb-2">
+                <span className="text-sm font-medium text-primary-600 dark:text-primary-400">
+                  {skill.proficiency}%
+                </span>
+              </div>
+              
+              {/* Proficiency Bar */}
+              <div className="w-full bg-gray-200 dark:bg-dark-600 rounded-full h-2 mb-3 overflow-hidden">
+                <div
+                  className="h-2 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 transition-all duration-1000 ease-out"
+                  style={{ 
+                    width: barsAnimated ? `${skill.proficiency}%` : '0%'
+                  }}
+                ></div>
+              </div>
+              
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Proficiency Level
+              </p>
+            </div>
+          ))}
+        </StaggeredContainer>
 
-                 {/* Skills Summary */}
-         <StaggeredContainer staggerDelay={150} className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-                                            <div
-               className="text-center p-6 rounded-lg hover:shadow-2xl transition-all duration-300 ease-out hover:scale-105 cursor-pointer hover:-translate-y-1"
-             >
-               <div className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2 transition-all duration-200 hover:scale-110">
-                 {skills.filter(s => s.category === 'frontend').length}
-               </div>
-               <div className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">
-                 Frontend Skills
-               </div>
-               <div className="text-gray-600 dark:text-gray-400">
-                 Modern UI/UX development
-               </div>
-             </div>
-           
-                                             <div
-               className="text-center p-6 rounded-lg hover:shadow-2xl transition-all duration-300 ease-out hover:scale-105 cursor-pointer hover:-translate-y-1"
-             >
-               <div className="text-4xl font-bold text-secondary-600 dark:text-secondary-400 mb-2 transition-all duration-200 hover:scale-110">
-                 {skills.filter(s => s.category === 'backend').length}
-               </div>
-               <div className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">
-                 Backend Skills
-               </div>
-               <div className="text-gray-600 dark:text-gray-400">
-                 Server-side development
-               </div>
-             </div>
-           
-                                             <div
-               className="text-center p-6 rounded-lg hover:shadow-2xl transition-all duration-300 ease-out hover:scale-105 cursor-pointer hover:-translate-y-1"
-             >
-               <div className="text-4xl font-bold text-gray-600 dark:text-gray-400 mb-2 transition-all duration-200 hover:scale-110">
-                 {skills.filter(s => s.category === 'tools').length}
-               </div>
-               <div className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">
-                 Tools & Others
-               </div>
-               <div className="text-gray-600 dark:text-gray-400">
-                 Development tools & languages
-               </div>
-             </div>
-         </StaggeredContainer>
+        {/* Skills Summary */}
+        <StaggeredContainer staggerDelay={150} className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            className="text-center p-6 rounded-lg hover:shadow-2xl transition-all duration-300 ease-out hover:scale-105 cursor-pointer hover:-translate-y-1"
+          >
+            <div className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2 transition-all duration-200 hover:scale-110">
+              {skills.filter(s => s.category === 'frontend').length}
+            </div>
+            <div className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">
+              Frontend Skills
+            </div>
+            <div className="text-gray-600 dark:text-gray-400">
+              Modern UI/UX development
+            </div>
+          </div>
+        
+          <div
+            className="text-center p-6 rounded-lg hover:shadow-2xl transition-all duration-300 ease-out hover:scale-105 cursor-pointer hover:-translate-y-1"
+          >
+            <div className="text-4xl font-bold text-secondary-600 dark:text-secondary-400 mb-2 transition-all duration-200 hover:scale-110">
+              {skills.filter(s => s.category === 'backend').length}
+            </div>
+            <div className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">
+              Backend Skills
+            </div>
+            <div className="text-gray-600 dark:text-gray-400">
+              Server-side development
+            </div>
+          </div>
+        
+          <div
+            className="text-center p-6 rounded-lg hover:shadow-2xl transition-all duration-300 ease-out hover:scale-105 cursor-pointer hover:-translate-y-1"
+          >
+            <div className="text-4xl font-bold text-gray-600 dark:text-gray-400 mb-2 transition-all duration-200 hover:scale-110">
+              {skills.filter(s => s.category === 'tools').length}
+            </div>
+            <div className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">
+              Tools & Others
+            </div>
+            <div className="text-gray-600 dark:text-gray-400">
+              Development tools & languages
+            </div>
+          </div>
+        </StaggeredContainer>
       </div>
     </section>
   );
