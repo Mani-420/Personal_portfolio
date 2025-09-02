@@ -1,0 +1,605 @@
+# .cursorrules (Frontend Coding, Review, and Architecture Guidelines)
+
+**⚠️ MANDATORY: These rules are mandatory for all contributors and reviewers, including AI assistants. Always read and follow these rules strictly before implementing any code changes. The goal is to ensure a robust, maintainable, scalable, and reliable frontend system that follows best practices and industry standards.**
+
+## 1. Core Principles
+
+- All code must be **maintainable**, **scalable**, and **reliable**.
+- Follow industry best practices and architectural principles:
+  - **DRY** (Don't Repeat Yourself): Centralize logic, avoid duplication.
+  - **KISS** (Keep It Simple, Stupid): Prefer simple, direct solutions over unnecessary complexity.
+  - **YAGNI** (You Aren't Gonna Need It): Only implement what is needed now, not speculative features.
+  - **SOLID** principles for component design.
+  - **Single Responsibility Principle**: Each component/function should have one clear purpose.
+  - **Separation of Concerns**: Keep UI logic, business logic, data fetching, and state management separate.
+  - **Extensibility**: Design components to be easily extended without modifying existing code.
+  - **Testability**: Write components that are easy to test in isolation with clear inputs and outputs.
+  - **Accessibility**: Ensure all components meet WCAG guidelines and are keyboard/screen reader friendly.
+  - **Performance**: Optimize for bundle size, rendering performance, and user experience.
+
+## 2. Project Structure
+
+- Place components in `src/components/`, pages in `src/pages/`, hooks in `src/hooks/`, and utilities in `src/utils/`.
+- Do not mix business logic and UI logic in the same component.
+- Organize files and folders for clarity and discoverability; avoid large, monolithic components.
+- Use feature-based organization for complex features: `src/features/auth/`, `src/features/dashboard/`.
+
+### 2.1 Component Organization
+
+- **Atomic Design**: Organize components by complexity level:
+  - `src/components/atoms/` - Basic building blocks (Button, Input, Text)
+  - `src/components/molecules/` - Simple combinations (SearchBar, Card)
+  - `src/components/organisms/` - Complex UI sections (Header, Sidebar)
+  - `src/components/templates/` - Page layouts
+  - `src/components/pages/` - Complete pages
+
+- **Shared Components**: Place reusable components in `src/components/shared/`.
+- **Feature Components**: Place feature-specific components in `src/features/[feature-name]/components/`.
+
+### 2.2 File Naming Conventions
+
+- **Components**: PascalCase (e.g., `UserProfile.tsx`, `ProductCard.tsx`)
+- **Hooks**: camelCase with 'use' prefix (e.g., `useAuth.ts`, `useLocalStorage.ts`)
+- **Utilities**: camelCase (e.g., `formatDate.ts`, `validationHelpers.ts`)
+- **Constants**: UPPER_SNAKE_CASE (e.g., `API_ENDPOINTS.ts`, `ROUTES.ts`)
+- **Types/Interfaces**: PascalCase (e.g., `UserTypes.ts`, `ApiResponse.ts`)
+
+## 3. Component Design Principles
+
+### 3.1 Component Composition
+
+- **Prefer composition over inheritance**: Use props.children, render props, or component composition.
+- **Keep components small and focused**: Aim for components under 200 lines of code.
+- **Single Responsibility**: Each component should have one clear purpose.
+- **Props Interface**: Always define TypeScript interfaces for component props.
+
+```tsx
+// ✅ Good: Clear props interface and single responsibility
+interface ButtonProps {
+  variant: 'primary' | 'secondary' | 'danger';
+  size: 'sm' | 'md' | 'lg';
+  children: React.ReactNode;
+  onClick?: () => void;
+  disabled?: boolean;
+}
+
+const Button: React.FC<ButtonProps> = ({ 
+  variant, 
+  size, 
+  children, 
+  onClick, 
+  disabled = false 
+}) => {
+  // Component logic here
+};
+```
+
+### 3.2 Component Reusability
+
+- **Make components reusable**: Design components to work in multiple contexts.
+- **Use prop spreading sparingly**: Prefer explicit props over `{...props}`.
+- **Default props**: Provide sensible defaults for optional props.
+- **Forward refs**: Use `React.forwardRef` for components that need ref forwarding.
+
+```tsx
+// ✅ Good: Reusable component with explicit props
+interface CardProps {
+  title: string;
+  subtitle?: string;
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+}
+
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ title, subtitle, children, className = '', onClick }, ref) => {
+    return (
+      <div 
+        ref={ref}
+        className={`bg-white rounded-lg shadow-md p-6 ${className}`}
+        onClick={onClick}
+      >
+        <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+        {subtitle && <p className="text-sm text-gray-600 mt-1">{subtitle}</p>}
+        <div className="mt-4">{children}</div>
+      </div>
+    );
+  }
+);
+```
+
+### 3.3 Component State Management
+
+- **Local state**: Use `useState` for component-specific state.
+- **Lift state up**: Share state between components by lifting it to the nearest common ancestor.
+- **Context for global state**: Use React Context for state that needs to be shared across many components.
+- **External state management**: Use Redux, Zustand, or similar for complex application state.
+
+## 4. TypeScript Best Practices
+
+### 4.1 Type Safety
+
+- **Strict TypeScript**: Enable strict mode in `tsconfig.json`.
+- **No `any` types**: Use proper types or `unknown` instead of `any`.
+- **Generic components**: Use generics for flexible, type-safe components.
+- **Type guards**: Use type guards for runtime type checking.
+
+```tsx
+// ✅ Good: Type-safe component with generics
+interface ListProps<T> {
+  items: T[];
+  renderItem: (item: T, index: number) => React.ReactNode;
+  keyExtractor: (item: T) => string | number;
+}
+
+function List<T>({ items, renderItem, keyExtractor }: ListProps<T>) {
+  return (
+    <ul className="space-y-2">
+      {items.map((item, index) => (
+        <li key={keyExtractor(item)}>
+          {renderItem(item, index)}
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
+### 4.2 Interface Design
+
+- **Extend interfaces**: Use interface extension for related types.
+- **Optional properties**: Mark optional properties with `?`.
+- **Readonly properties**: Use `readonly` for immutable properties.
+- **Union types**: Use union types for props that accept multiple values.
+
+```tsx
+// ✅ Good: Well-designed interfaces
+interface BaseUser {
+  readonly id: string;
+  email: string;
+  name: string;
+}
+
+interface UserProfile extends BaseUser {
+  avatar?: string;
+  bio?: string;
+  preferences: UserPreferences;
+}
+
+type UserRole = 'admin' | 'user' | 'moderator';
+```
+
+## 5. Tailwind CSS Best Practices
+
+### 5.1 Class Organization
+
+- **Logical grouping**: Group related classes together (layout, spacing, typography, colors).
+- **Responsive design**: Use responsive prefixes consistently.
+- **Custom classes**: Create custom classes for repeated patterns using `@apply`.
+- **Dark mode**: Use dark mode variants consistently.
+
+```tsx
+// ✅ Good: Well-organized Tailwind classes
+<div className="
+  flex items-center justify-between
+  p-4 md:p-6
+  bg-white dark:bg-gray-800
+  border border-gray-200 dark:border-gray-700
+  rounded-lg shadow-sm
+  hover:shadow-md transition-shadow duration-200
+">
+  {/* Content */}
+</div>
+```
+
+### 5.2 Custom Components
+
+- **Component abstraction**: Create reusable components for common UI patterns.
+- **Variant system**: Use variant props for different styles.
+- **Consistent spacing**: Use Tailwind's spacing scale consistently.
+- **Color system**: Use semantic color names and maintain consistency.
+
+```tsx
+// ✅ Good: Custom component with variants
+interface BadgeProps {
+  variant: 'success' | 'warning' | 'error' | 'info';
+  children: React.ReactNode;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const Badge: React.FC<BadgeProps> = ({ variant, children, size = 'md' }) => {
+  const baseClasses = "inline-flex items-center font-medium rounded-full";
+  
+  const variantClasses = {
+    success: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+    warning: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
+    error: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
+    info: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+  };
+  
+  const sizeClasses = {
+    sm: "px-2 py-0.5 text-xs",
+    md: "px-2.5 py-0.5 text-sm",
+    lg: "px-3 py-1 text-base"
+  };
+  
+  return (
+    <span className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]}`}>
+      {children}
+    </span>
+  );
+};
+```
+
+### 5.3 Responsive Design
+
+- **Mobile-first**: Design for mobile first, then enhance for larger screens.
+- **Breakpoint consistency**: Use consistent breakpoints across the application.
+- **Flexible layouts**: Use flexbox and grid for responsive layouts.
+- **Touch targets**: Ensure touch targets are at least 44px for mobile.
+
+## 6. State Management
+
+### 6.1 Local State
+
+- **useState for simple state**: Use `useState` for component-specific state.
+- **useReducer for complex state**: Use `useReducer` for state with complex logic.
+- **State immutability**: Always update state immutably.
+- **State normalization**: Normalize complex state structures.
+
+```tsx
+// ✅ Good: Proper state management
+const [formData, setFormData] = useState({
+  name: '',
+  email: '',
+  message: ''
+});
+
+const handleInputChange = (field: keyof typeof formData) => (
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+) => {
+  setFormData(prev => ({
+    ...prev,
+    [field]: e.target.value
+  }));
+};
+```
+
+### 6.2 Global State
+
+- **Context for simple global state**: Use React Context for simple global state.
+- **External libraries for complex state**: Use Redux, Zustand, or similar for complex state.
+- **State persistence**: Use localStorage or sessionStorage for state that needs to persist.
+- **State synchronization**: Keep local and global state in sync.
+
+### 6.3 Data Fetching
+
+- **Custom hooks for data fetching**: Create custom hooks for API calls.
+- **Error handling**: Handle loading, error, and success states.
+- **Caching**: Implement caching strategies for API responses.
+- **Optimistic updates**: Use optimistic updates for better UX.
+
+```tsx
+// ✅ Good: Custom hook for data fetching
+interface UseUserData {
+  user: User | null;
+  loading: boolean;
+  error: string | null;
+  refetch: () => void;
+}
+
+const useUserData = (userId: string): UseUserData => {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchUser = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      const response = await api.getUser(userId);
+      setUser(response.data);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to fetch user');
+    } finally {
+      setLoading(false);
+    }
+  }, [userId]);
+
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
+
+  return { user, loading, error, refetch: fetchUser };
+};
+```
+
+## 7. Performance Optimization
+
+### 7.1 React Performance
+
+- **React.memo**: Use `React.memo` for components that re-render frequently.
+- **useMemo**: Use `useMemo` for expensive calculations.
+- **useCallback**: Use `useCallback` for functions passed as props.
+- **Code splitting**: Use dynamic imports for route-based code splitting.
+
+```tsx
+// ✅ Good: Performance optimized component
+const ExpensiveComponent = React.memo<{ data: ComplexData[]; onItemClick: (id: string) => void }>(
+  ({ data, onItemClick }) => {
+    const processedData = useMemo(() => {
+      return data.map(item => ({
+        ...item,
+        processed: expensiveCalculation(item)
+      }));
+    }, [data]);
+
+    const handleClick = useCallback((id: string) => {
+      onItemClick(id);
+    }, [onItemClick]);
+
+    return (
+      <div>
+        {processedData.map(item => (
+          <Item key={item.id} item={item} onClick={handleClick} />
+        ))}
+      </div>
+    );
+  }
+);
+```
+
+### 7.2 Bundle Optimization
+
+- **Tree shaking**: Use ES6 modules for better tree shaking.
+- **Lazy loading**: Use lazy loading for routes and heavy components.
+- **Image optimization**: Use optimized image formats and lazy loading.
+- **Bundle analysis**: Regularly analyze bundle size and optimize.
+
+### 7.3 Rendering Optimization
+
+- **Virtual scrolling**: Use virtual scrolling for large lists.
+- **Debouncing**: Debounce expensive operations like search.
+- **Throttling**: Throttle scroll and resize events.
+- **Intersection Observer**: Use Intersection Observer for lazy loading.
+
+## 8. Error Handling & User Experience
+
+### 8.1 Error Boundaries
+
+- **Error boundaries**: Implement error boundaries for component error handling.
+- **Graceful degradation**: Provide fallback UI for failed components.
+- **Error reporting**: Log errors for debugging and monitoring.
+- **User feedback**: Provide clear error messages to users.
+
+```tsx
+// ✅ Good: Error boundary component
+class ErrorBoundary extends React.Component<
+  { children: React.ReactNode; fallback?: React.ReactNode },
+  { hasError: boolean; error?: Error }
+> {
+  constructor(props: { children: React.ReactNode; fallback?: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error('Error caught by boundary:', error, errorInfo);
+    // Log to error reporting service
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return this.props.fallback || (
+        <div className="p-4 text-center">
+          <h2 className="text-lg font-semibold text-red-600">Something went wrong</h2>
+          <p className="text-gray-600 mt-2">Please try refreshing the page</p>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+```
+
+### 8.2 Loading States
+
+- **Skeleton loading**: Use skeleton components for better perceived performance.
+- **Loading indicators**: Show loading indicators for async operations.
+- **Progressive loading**: Load content progressively.
+- **Optimistic UI**: Use optimistic updates for better UX.
+
+### 8.3 Accessibility
+
+- **Semantic HTML**: Use semantic HTML elements.
+- **ARIA attributes**: Use ARIA attributes for complex interactions.
+- **Keyboard navigation**: Ensure all interactive elements are keyboard accessible.
+- **Screen reader support**: Test with screen readers and provide proper labels.
+- **Color contrast**: Ensure sufficient color contrast ratios.
+
+```tsx
+// ✅ Good: Accessible component
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div
+        className="fixed inset-0 bg-black bg-opacity-50"
+        onClick={onClose}
+        aria-hidden="true"
+      />
+      <div
+        ref={modalRef}
+        className="relative bg-white rounded-lg p-6 max-w-md w-full mx-4"
+        role="document"
+      >
+        <h2 id="modal-title" className="text-lg font-semibold mb-4">
+          {title}
+        </h2>
+        {children}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+          aria-label="Close modal"
+        >
+          <XIcon className="w-5 h-5" />
+        </button>
+      </div>
+    </div>
+  );
+};
+```
+
+## 9. Testing
+
+### 9.1 Testing Strategy
+
+- **Unit tests**: Test individual components and functions.
+- **Integration tests**: Test component interactions.
+- **E2E tests**: Test complete user workflows.
+- **Accessibility tests**: Test accessibility compliance.
+
+### 9.2 Testing Best Practices
+
+- **Test behavior, not implementation**: Focus on what the component does, not how it does it.
+- **Mock external dependencies**: Mock API calls and external services.
+- **Test edge cases**: Test error states, loading states, and edge cases.
+- **Snapshot testing**: Use snapshot testing sparingly and purposefully.
+
+```tsx
+// ✅ Good: Component test
+import { render, screen, fireEvent } from '@testing-library/react';
+import { Button } from './Button';
+
+describe('Button', () => {
+  it('renders with correct text', () => {
+    render(<Button>Click me</Button>);
+    expect(screen.getByRole('button', { name: /click me/i })).toBeInTheDocument();
+  });
+
+  it('calls onClick when clicked', () => {
+    const handleClick = jest.fn();
+    render(<Button onClick={handleClick}>Click me</Button>);
+    
+    fireEvent.click(screen.getByRole('button'));
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('is disabled when disabled prop is true', () => {
+    render(<Button disabled>Click me</Button>);
+    expect(screen.getByRole('button')).toBeDisabled();
+  });
+});
+```
+
+## 10. Code Quality & Standards
+
+### 10.1 Code Style
+
+- **ESLint**: Use ESLint with React and TypeScript rules.
+- **Prettier**: Use Prettier for consistent code formatting.
+- **Husky**: Use Husky for pre-commit hooks.
+- **Consistent naming**: Use consistent naming conventions throughout.
+
+### 10.2 Documentation
+
+- **JSDoc comments**: Document complex functions and components.
+- **README files**: Maintain up-to-date README files.
+- **Storybook**: Use Storybook for component documentation.
+- **API documentation**: Document component props and usage examples.
+
+### 10.3 Code Review
+
+- **Pull request reviews**: Require code reviews for all changes.
+- **Automated checks**: Use automated checks for code quality.
+- **Performance reviews**: Review performance implications of changes.
+- **Accessibility reviews**: Ensure accessibility compliance.
+
+## 11. Security
+
+### 11.1 Input Validation
+
+- **Client-side validation**: Validate user input on the client side.
+- **Sanitization**: Sanitize user input to prevent XSS attacks.
+- **CSRF protection**: Implement CSRF protection for forms.
+- **Content Security Policy**: Use CSP headers.
+
+### 11.2 Authentication & Authorization
+
+- **Secure token storage**: Store tokens securely (httpOnly cookies, secure storage).
+- **Token refresh**: Implement secure token refresh mechanisms.
+- **Role-based access**: Implement role-based access control.
+- **Session management**: Properly manage user sessions.
+
+## 12. Deployment & Build
+
+### 12.1 Build Optimization
+
+- **Environment variables**: Use environment variables for configuration.
+- **Build optimization**: Optimize build process for production.
+- **Asset optimization**: Optimize images, fonts, and other assets.
+- **CDN usage**: Use CDN for static assets.
+
+### 12.2 Monitoring & Analytics
+
+- **Error tracking**: Implement error tracking and monitoring.
+- **Performance monitoring**: Monitor application performance.
+- **User analytics**: Track user behavior and engagement.
+- **A/B testing**: Implement A/B testing capabilities.
+
+## 13. Contribution Guidelines
+
+- **Feature branches**: Use feature branches for development.
+- **Commit messages**: Write clear, descriptive commit messages.
+- **Pull request template**: Use pull request templates.
+- **Code review checklist**: Use code review checklists.
+- **Testing requirements**: Require tests for new features.
+
+## 14. Performance Monitoring
+
+### 14.1 Core Web Vitals
+
+- **Largest Contentful Paint (LCP)**: Optimize for fast loading.
+- **First Input Delay (FID)**: Ensure responsive interactions.
+- **Cumulative Layout Shift (CLS)**: Prevent layout shifts.
+- **First Contentful Paint (FCP)**: Optimize initial rendering.
+
+### 14.2 Performance Budgets
+
+- **Bundle size limits**: Set and enforce bundle size limits.
+- **Performance budgets**: Set performance budgets for key metrics.
+- **Monitoring alerts**: Set up alerts for performance regressions.
+- **Regular audits**: Conduct regular performance audits.
+
+---
+
+**These rules are mandatory for all contributors and reviewers. The goal is to ensure a robust, maintainable, scalable, and reliable frontend system that follows best practices and industry standards. Update this file as the codebase evolves.**
