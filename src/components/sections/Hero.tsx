@@ -147,7 +147,7 @@ const Hero = () => {
             <div className="relative transition-transform duration-200 ease-out hover:scale-105">
               <div className="w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary-200 dark:border-primary-800 shadow-2xl">
                 <img
-                  src="/Git Profile.png"
+                  src="/Git_Profile.png"
                   alt="Abdul Rehman"
                   className="w-full h-full object-cover"
                 />
