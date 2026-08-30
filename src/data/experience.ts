@@ -3,20 +3,20 @@ import { Experience } from '../types';
 export const experiences: Experience[] = [
   {
     id: '1',
-    title: 'Software Engineer Intern',
-    company: 'Hatzs Dimension',
+    title: 'Backend Intern · Full-Stack Engineering Track',
+    company: 'Hatzs Dimensions',
     period: 'Aug 2025 - Present',
     responsibilities: [
-      'Worked on large-scale group project Befer AI',
-      'Developed personal projects to enhance skills',
-      'Collaborated with senior developers on complex features',
-      'Participated in code reviews and team meetings',
-      'Gained hands-on experience with modern development practices'
+      'Contributed to scalable product systems including Befer AI and DealerIQ',
+      'Built and supported features with React, Next.js, Express, Fastify, and MySQL',
+      'Worked with product integrations including Stripe, QuickBooks, and email editors',
+      'Collaborated through code reviews, team planning, debugging, and production delivery',
+      'Expanding into applied AI engineering, conversational agents, and voice workflows'
     ]
   },
   {
     id: '2',
-    title: 'Freelancing',
+    title: 'Freelance Web Developer',
     company: 'Self-Employed',
     period: 'Feb 2024 - Present',
     responsibilities: [
@@ -24,7 +24,7 @@ export const experiences: Experience[] = [
       'Created professional portfolios and personal websites',
       'Handled responsive design and cross-browser compatibility',
       'Managed client communication and project requirements',
-      'Delivered projects on time with high client satisfaction'
+      'Delivered maintainable web solutions aligned with client requirements'
     ]
   },
   {

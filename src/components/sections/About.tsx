@@ -5,9 +5,9 @@ const About = () => {
   const stats = [
     {
       icon: FiCode,
-      number: '6+',
+      number: '11+',
       label: 'Projects Completed',
-      description: 'Full-stack applications'
+      description: 'Product & AI builds'
     },
     {
       icon: FiDatabase,
@@ -17,15 +17,15 @@ const About = () => {
     },
     {
       icon: FiMonitor,
-      number: '15+',
+      number: '20+',
       label: 'Technologies',
-      description: 'Mastered skills'
+      description: 'Across web & AI'
     },
     {
       icon: FiUsers,
-      number: '100%',
-      label: 'Client Satisfaction',
-      description: 'Quality focused'
+      number: '3+',
+      label: 'Scalable Systems',
+      description: 'Enterprise & team work'
     }
   ];
 
@@ -51,25 +51,19 @@ const About = () => {
             className="space-y-6"
           >
             <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-              Passionate Full Stack Developer
+              Full-Stack Engineer, Moving into AI
             </h3>
             
             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-              I am a dedicated and passionate Full Stack Web Developer with a strong foundation in modern web technologies. 
-              My journey in web development started with a curiosity to build things that make a difference, and it has evolved 
-              into a passion for creating robust, scalable, and user-friendly applications.
+              I am a full-stack software engineer focused on turning product ideas into reliable, scalable systems. My work spans polished React interfaces, backend APIs, relational and document databases, secure authentication, and integration-heavy product workflows.
             </p>
             
             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-              I specialize in the MERN stack (MongoDB, Express.js, React.js, Node.js) and have extensive experience with 
-              TypeScript, Next.js, and modern CSS frameworks like Tailwind CSS. My approach combines technical expertise 
-              with a keen eye for user experience and performance optimization.
+              At Hatzs Dimensions, I have grown from backend-focused work toward full-stack engineering using React, Next.js, Express, Fastify, and MySQL. I have also worked with integrations such as Stripe, QuickBooks, and email-building tools while contributing to larger systems including DealerIQ and Befer AI.
             </p>
             
             <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-              When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, 
-              or sharing knowledge with the developer community. I believe in continuous learning and staying updated 
-              with the latest industry trends and best practices.
+              My next direction is applied AI engineering. I am developing the skills to build chat and voice agents that can use tools, retrieve trusted business knowledge, automate bookings, and hand work back to people safely when needed.
             </p>
 
             {/* Key Highlights */}
@@ -79,12 +73,12 @@ const About = () => {
               </h4>
               <StaggeredContainer staggerDelay={80} className="space-y-3">
                 {[
-                  'Strong foundation in both frontend and backend development',
-                  'Experience with modern JavaScript frameworks and libraries',
-                  'Proficiency in database design and API development',
-                  'Understanding of responsive design and user experience',
-                  'Knowledge of version control and collaborative development',
-                  'Commitment to writing clean, maintainable code'
+                  'End-to-end delivery across frontend, backend, data, and integrations',
+                  'Experience contributing to scalable, shared product codebases',
+                  'Secure API design, authentication, authorization, and validation',
+                  'Practical work with payments, accounting, and content-tool integrations',
+                  'Growing applied AI expertise in RAG, agent workflows, and voice systems',
+                  'Commitment to clean, maintainable, production-minded code'
                 ].map((item, index) => (
                   <AnimatedElement
                     key={index}
@@ -107,7 +101,7 @@ const About = () => {
             animation="fade-in-right"
             duration={600}
             delay={200}
-            className="grid grid-cols-2 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-6"
           >
             {stats.map((stat, index) => (
               <div
@@ -164,10 +158,10 @@ const About = () => {
             <div className="space-y-4">
               <div>
                 <h5 className="font-medium text-gray-900 dark:text-gray-100">
-                  Full Stack Development
+                  Applied AI Engineering
                 </h5>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Expanding skills in TypeScript and Next.js to build better, scalable web applications with modern development practices.
+                  Building on my software engineering foundation with conversational AI, RAG, tool-calling agents, voice workflows, guardrails, and business-system integrations.
                 </p>
               </div>
             </div>

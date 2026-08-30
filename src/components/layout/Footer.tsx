@@ -15,10 +15,9 @@ const Footer = () => {
             duration={500}
             className="space-y-4"
           >
-            <h3 className="text-2xl font-bold gradient-text">Abdul Rehman</h3>
+            <h3 className="text-2xl font-bold gradient-text">Abdul Rehman Tahir</h3>
             <p className="text-gray-600 dark:text-gray-400">
-              Full Stack Web Developer passionate about creating modern,
-              responsive, and high-performance web applications.
+              Full-stack software engineer building scalable products and moving deeper into applied AI, conversational agents, and voice automation.
             </p>
           </AnimatedElement>
 
@@ -107,7 +106,7 @@ const Footer = () => {
           className="border-t border-gray-200 dark:border-dark-700 mt-8 pt-8 text-center"
         >
           <p className="text-gray-600 dark:text-gray-400">
-            © {currentYear} Abdul Rehman. All rights reserved.
+            © {currentYear} Abdul Rehman Tahir. All rights reserved.
           </p>
           <p className="text-sm text-gray-500 dark:text-gray-500 mt-2">
             Built with React, TypeScript, and Tailwind CSS

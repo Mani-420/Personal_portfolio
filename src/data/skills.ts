@@ -103,6 +103,50 @@ export const skills: Skill[] = [
     color: '#D63AFF'
   },
 
+  // AI Engineering Skills
+  {
+    name: 'AI Agents',
+    icon: 'agents',
+    category: 'ai',
+    proficiency: 72,
+    color: '#8B5CF6'
+  },
+  {
+    name: 'LLM Integration',
+    icon: 'llm',
+    category: 'ai',
+    proficiency: 74,
+    color: '#7C3AED'
+  },
+  {
+    name: 'RAG & Vector Search',
+    icon: 'rag',
+    category: 'ai',
+    proficiency: 68,
+    color: '#6366F1'
+  },
+  {
+    name: 'Voice AI',
+    icon: 'voice',
+    category: 'ai',
+    proficiency: 65,
+    color: '#A855F7'
+  },
+  {
+    name: 'Python',
+    icon: 'python',
+    category: 'ai',
+    proficiency: 70,
+    color: '#3776AB'
+  },
+  {
+    name: 'FastAPI',
+    icon: 'fastapi',
+    category: 'ai',
+    proficiency: 66,
+    color: '#009688'
+  },
+
   // Tools & Others
   {
     name: 'Git',
@@ -124,13 +168,6 @@ export const skills: Skill[] = [
     category: 'tools',
     proficiency: 75,
     color: '#00599C'
-  },
-  {
-    name: 'Python',
-    icon: 'python',
-    category: 'tools',
-    proficiency: 70,
-    color: '#3776AB'
   },
   {
     name: 'VS Code',

@@ -1,7 +1,7 @@
 export interface Skill {
   name: string;
   icon: string;
-  category: 'frontend' | 'backend' | 'tools';
+  category: 'frontend' | 'backend' | 'ai' | 'tools';
   proficiency: number;
   color: string;
 }
@@ -13,10 +13,12 @@ export interface Project {
   longDescription: string;
   images: string[]; // Array of image paths for horizontal scrolling
   technologies: string[];
-  category: 'frontend' | 'backend' | 'fullstack';
-  githubUrl: string;
+  category: 'frontend' | 'backend' | 'fullstack' | 'ai';
+  githubUrl?: string;
   liveUrl?: string;
   linkedinUrl?: string;
+  status?: string;
+  featured?: boolean;
   features: string[];
 }
 
@@ -27,16 +29,6 @@ export interface Experience {
   period: string;
   responsibilities: string[];
   position?: 'left' | 'right';
-}
-
-export interface Testimonial {
-  id: string;
-  name: string;
-  role: string;
-  company: string;
-  content: string;
-  avatar: string;
-  rating: number;
 }
 
 export interface ContactInfo {

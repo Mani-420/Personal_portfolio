@@ -16,12 +16,11 @@ const Hero = () => {
 
   // Typewriter words that will cycle through
   const typewriterWords = [
-    'Web Developer',
-    'Backend Developer',
-    'Software Engineer',
-    'Node.js Developer',
-    'Next.js Developer',
-    'Full Stack Developer'
+    'Full-Stack Software Engineer',
+    'AI Engineer in Training',
+    'Backend Engineer',
+    'Scalable Systems Builder',
+    'Agentic AI Developer'
   ];
 
   return (
@@ -50,7 +49,7 @@ const Hero = () => {
                 delay={300}
                 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-gray-100"
               >
-                Abdul Rehman
+                Abdul Rehman Tahir
               </AnimatedElement>
               
               <AnimatedElement
@@ -75,8 +74,7 @@ const Hero = () => {
               delay={500}
               className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
             >
-              Passionate about building modern, responsive, and high-performance web applications. 
-              Specialized in the MERN stack with expertise in React, Node.js, and modern web technologies.
+              I build scalable full-stack products and backend systems, and I am now moving deeper into applied AI engineering—especially conversational agents, voice workflows, and reliable business automation.
             </AnimatedElement>
 
             {/* CTA Buttons */}
@@ -145,10 +143,10 @@ const Hero = () => {
             className="flex justify-center lg:justify-end"
           >
             <div className="relative transition-transform duration-200 ease-out hover:scale-105">
-              <div className="w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary-200 dark:border-primary-800 shadow-2xl">
+              <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary-200 dark:border-primary-800 shadow-2xl">
                 <img
                   src="/Git_Profile.png"
-                  alt="Abdul Rehman"
+                  alt="Abdul Rehman Tahir"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -156,16 +154,16 @@ const Hero = () => {
               {/* Floating Elements */}
               <FloatingElement
                 speed={3}
-                className="absolute -top-4 -right-4 bg-primary-600 text-white p-3 rounded-full shadow-lg"
+                className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 bg-primary-600 text-white p-2 sm:p-3 rounded-full shadow-lg"
               >
-                <span className="text-sm font-medium">React</span>
+                <span className="text-xs sm:text-sm font-medium">Full Stack</span>
               </FloatingElement>
               
               <FloatingElement
                 speed={3}
-                className="absolute -bottom-4 -left-4 bg-secondary-600 text-white p-3 rounded-full shadow-lg"
+                className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 bg-secondary-600 text-white p-2 sm:p-3 rounded-full shadow-lg"
               >
-                <span className="text-sm font-medium">Node.js</span>
+                <span className="text-xs sm:text-sm font-medium">AI Agents</span>
               </FloatingElement>
             </div>
           </AnimatedElement>

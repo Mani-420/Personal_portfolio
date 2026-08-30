@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Befer AI collaborative AI product</title>
+  <desc id="desc">Abstract AI network and application interface</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#180b2f"/><stop offset="1" stop-color="#6d28d9"/></linearGradient><radialGradient id="orb"><stop stop-color="#f0abfc"/><stop offset="1" stop-color="#8b5cf6"/></radialGradient></defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <circle cx="1040" cy="520" r="330" fill="#c084fc" opacity=".09"/>
+  <text x="84" y="150" fill="#d8b4fe" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="5">COLLABORATIVE AI PRODUCT</text>
+  <text x="80" y="238" fill="white" font-family="Inter,Arial,sans-serif" font-size="76" font-weight="800">Befer AI</text>
+  <text x="84" y="287" fill="#f3e8ff" font-family="Inter,Arial,sans-serif" font-size="24">AI product experiences, built collaboratively.</text>
+  <g transform="translate(900 320)">
+    <g stroke="#e9d5ff" stroke-width="4" opacity=".55"><path d="M0 0l-125-125M0 0l150-115M0 0l165 115M0 0l-130 125M0 0v-185"/></g>
+    <circle r="82" fill="url(#orb)" opacity=".95"/><circle r="46" fill="#4c1d95"/><path d="M-20 3c12-30 35-30 48 0M-24 24h54" fill="none" stroke="white" stroke-width="7" stroke-linecap="round"/>
+    <g fill="#a855f7" stroke="#f3e8ff" stroke-width="4"><circle cy="-185" r="25"/><circle cx="-125" cy="-125" r="25"/><circle cx="150" cy="-115" r="25"/><circle cx="165" cy="115" r="25"/><circle cx="-130" cy="125" r="25"/></g>
+  </g>
+  <g fill="#f3e8ff" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="600"><text x="84" y="548">NEXT.JS</text><text x="190" y="548">NODE.JS</text><text x="290" y="548">MYSQL</text><text x="372" y="548">AI INTEGRATION</text></g>
+</svg>

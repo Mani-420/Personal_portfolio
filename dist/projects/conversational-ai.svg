@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Conversational AI agent platform</title>
+  <desc id="desc">Chat bubbles connected to tools and knowledge</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111827"/><stop offset="1" stop-color="#4338ca"/></linearGradient></defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <text x="84" y="142" fill="#a5b4fc" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="5">APPLIED AI ENGINEERING</text>
+  <text x="80" y="220" fill="white" font-family="Inter,Arial,sans-serif" font-size="64" font-weight="800">Conversational AI</text>
+  <text x="84" y="275" fill="#e0e7ff" font-family="Inter,Arial,sans-serif" font-size="25">Grounded answers. Useful tools. Safe handoffs.</text>
+  <g transform="translate(670 92)">
+    <rect width="430" height="480" rx="34" fill="#ffffff" opacity=".1" stroke="#c7d2fe" stroke-opacity=".3"/>
+    <rect x="36" y="42" width="270" height="88" rx="24" fill="#ffffff" opacity=".16"/><circle cx="74" cy="84" r="20" fill="#818cf8"/><rect x="110" y="70" width="150" height="12" rx="6" fill="#e0e7ff" opacity=".8"/><rect x="110" y="94" width="105" height="10" rx="5" fill="#e0e7ff" opacity=".45"/>
+    <rect x="124" y="160" width="270" height="106" rx="24" fill="#4f46e5"/><circle cx="356" cy="213" r="20" fill="#c4b5fd"/><rect x="160" y="190" width="145" height="12" rx="6" fill="white" opacity=".9"/><rect x="160" y="218" width="110" height="10" rx="5" fill="white" opacity=".55"/>
+    <rect x="36" y="300" width="320" height="110" rx="24" fill="#ffffff" opacity=".16"/><path d="M79 354h37m-18-18v37" stroke="#a5b4fc" stroke-width="8" stroke-linecap="round"/><rect x="138" y="331" width="165" height="12" rx="6" fill="#e0e7ff" opacity=".8"/><rect x="138" y="360" width="125" height="10" rx="5" fill="#e0e7ff" opacity=".45"/>
+  </g>
+  <g fill="#e0e7ff" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="600"><text x="84" y="535">RAG</text><text x="148" y="535">TOOL CALLING</text><text x="297" y="535">MEMORY</text><text x="395" y="535">GUARDRAILS</text></g>
+</svg>

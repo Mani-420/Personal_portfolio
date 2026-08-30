@@ -23,7 +23,6 @@ const Header = () => {
     { name: 'Skills', href: '#skills' },
     { name: 'Projects', href: '#projects' },
     { name: 'Experience', href: '#experience' },
-    { name: 'Testimonials', href: '#testimonials' },
     { name: 'Contact', href: '#contact' },
   ];
 
@@ -53,13 +52,13 @@ const Header = () => {
             duration={400}
             hover={true}
             hoverAnimation="scale"
-            className="text-2xl font-bold gradient-text"
+            className="text-xl sm:text-2xl font-bold gradient-text"
           >
             <button
               onClick={() => scrollToSection('#home')}
               className="cursor-pointer"
             >
-              Abdul Rehman
+              Abdul Rehman Tahir
             </button>
           </AnimatedElement>
 

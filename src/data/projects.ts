@@ -1,6 +1,108 @@
 import { Project } from '../types';
 
 export const projects: Project[] = [
+  // Enterprise & Featured Work
+  {
+    id: 'studiloom',
+    title: 'Studiloom — Enterprise Learning Platform',
+    description: 'An enterprise-level platform that brings academic workflows, communication, and student services into one secure system.',
+    longDescription: 'Studiloom is a modular full-stack product designed for complex education workflows. The platform centralizes role-based experiences, secure authentication, operational modules, and consistent APIs so new capabilities can be added without turning the codebase into a monolith.',
+    images: ['/projects/studiloom.svg?v=2'],
+    technologies: ['React.js', 'TypeScript', 'Node.js', 'Express.js', 'RESTful APIs', 'JWT', 'RBAC'],
+    category: 'fullstack',
+    status: 'Enterprise project',
+    featured: true,
+    linkedinUrl: 'https://www.linkedin.com/in/abdul-rehman-tahir-7068aa315/',
+    features: [
+      'Role-based experiences for different platform users',
+      'Secure authentication and authorization flows',
+      'Modular architecture for maintainable feature growth',
+      'Consistent API contracts and validation',
+      'Centralized academic and communication workflows',
+      'Production-minded error handling and security'
+    ]
+  },
+  {
+    id: 'dealeriq',
+    title: 'DealerIQ — Scalable Dealer Operations',
+    description: 'A scalable product system for organizing dealer workflows, operational data, and connected services.',
+    longDescription: 'DealerIQ represents my experience contributing to a larger product codebase where reliability, maintainability, and integration boundaries matter. My focus includes backend-oriented feature work, API design, product integrations, and collaboration across a shared engineering workflow.',
+    images: ['/projects/dealeriq.svg'],
+    technologies: ['TypeScript', 'Node.js', 'React.js', 'RESTful APIs', 'System Design', 'Integrations'],
+    category: 'fullstack',
+    status: 'Featured work',
+    featured: true,
+    linkedinUrl: 'https://www.linkedin.com/in/abdul-rehman-tahir-7068aa315/',
+    features: [
+      'Scalable, modular product architecture',
+      'Backend APIs for operational workflows',
+      'Structured data and service boundaries',
+      'Integration-ready application design',
+      'Collaborative delivery in a shared codebase',
+      'Maintainability and production reliability focus'
+    ]
+  },
+  {
+    id: 'befer-ai',
+    title: 'Befer AI — Collaborative AI Product',
+    description: 'A large-scale team project combining modern web engineering with AI-enabled product experiences.',
+    longDescription: 'Befer AI is a collaborative product project at Hatzs Dimensions. The work strengthened my experience with shared engineering standards, backend services, database-backed features, integrations, and the practical demands of building an AI-enabled application with a team.',
+    images: ['/projects/befer-ai.svg?v=2'],
+    technologies: ['Next.js', 'Node.js', 'Express.js', 'MySQL', 'AI Integration', 'Team Delivery'],
+    category: 'ai',
+    status: 'Featured work',
+    featured: true,
+    linkedinUrl: 'https://www.linkedin.com/in/abdul-rehman-tahir-7068aa315/',
+    features: [
+      'AI-enabled application workflows',
+      'Backend service and API development',
+      'Relational data modeling and persistence',
+      'Team-based planning and code review',
+      'Integration-focused feature delivery',
+      'Scalable product engineering practices'
+    ]
+  },
+
+  // Applied AI Engineering Projects
+  {
+    id: 'conversational-ai-agents',
+    title: 'Conversational AI Agent Platform',
+    description: 'A reusable chat-agent architecture for customer support, lead qualification, and grounded business answers.',
+    longDescription: 'An applied AI engineering project focused on building reliable business chat agents. The architecture combines tool use, retrieval-augmented generation, conversation memory, guardrails, and human handoff so the same foundation can be adapted to different business domains.',
+    images: ['/projects/conversational-ai.svg'],
+    technologies: ['Python', 'FastAPI', 'LLM APIs', 'RAG', 'Vector Search', 'Webhooks'],
+    category: 'ai',
+    status: 'In development',
+    featured: true,
+    features: [
+      'Grounded answers from business knowledge bases',
+      'Tool calling for real business actions',
+      'Lead capture and qualification workflows',
+      'Conversation memory with privacy boundaries',
+      'Guardrails, fallbacks, and human handoff',
+      'Reusable multi-business architecture'
+    ]
+  },
+  {
+    id: 'voice-receptionist-agents',
+    title: 'AI Voice Receptionists — Restaurants & Dental Clinics',
+    description: 'Voice agents that handle common calls, bookings, FAQs, and escalation for appointment-driven businesses.',
+    longDescription: 'A voice-agent project for restaurant and dental reception workflows. The system is designed to understand callers, answer domain-specific questions, check structured availability, create or modify bookings, and transfer sensitive or uncertain requests to a person.',
+    images: ['/projects/voice-agents.svg?v=2'],
+    technologies: ['Python', 'FastAPI', 'Voice AI', 'Speech-to-Text', 'Text-to-Speech', 'Scheduling APIs'],
+    category: 'ai',
+    status: 'In development',
+    featured: true,
+    features: [
+      'Natural inbound call handling',
+      'Restaurant reservations and dental appointment flows',
+      'Frequently asked question automation',
+      'Availability checks and scheduling integration',
+      'Call summaries, transcripts, and analytics',
+      'Safe escalation to human staff'
+    ]
+  },
+
   // Full Stack Projects
   {
     id: 'chat-app',

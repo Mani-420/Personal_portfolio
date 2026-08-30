@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">AI voice receptionists</title>
+  <desc id="desc">Voice waveform for restaurant and dental appointment agents</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#082f49"/><stop offset="1" stop-color="#0e7490"/></linearGradient></defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <circle cx="1000" cy="90" r="270" fill="#67e8f9" opacity=".11"/>
+  <text x="84" y="142" fill="#67e8f9" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="700" letter-spacing="5">VOICE AUTOMATION</text>
+  <text x="80" y="220" fill="white" font-family="Inter,Arial,sans-serif" font-size="64" font-weight="800">AI Voice Receptionists</text>
+  <text x="84" y="273" fill="#cffafe" font-family="Inter,Arial,sans-serif" font-size="24">Restaurants, dental clinics, and appointment workflows.</text>
+  <g transform="translate(105 380)" fill="#67e8f9">
+    <rect x="0" y="-24" width="16" height="48" rx="8" opacity=".55"/><rect x="34" y="-58" width="16" height="116" rx="8" opacity=".65"/><rect x="68" y="-90" width="16" height="180" rx="8"/><rect x="102" y="-46" width="16" height="92" rx="8" opacity=".75"/><rect x="136" y="-118" width="16" height="236" rx="8"/><rect x="170" y="-72" width="16" height="144" rx="8" opacity=".7"/><rect x="204" y="-34" width="16" height="68" rx="8" opacity=".55"/><rect x="238" y="-95" width="16" height="190" rx="8"/><rect x="272" y="-55" width="16" height="110" rx="8" opacity=".7"/><rect x="306" y="-22" width="16" height="44" rx="8" opacity=".5"/>
+  </g>
+  <g transform="translate(930 315)">
+    <circle r="136" fill="#083344" stroke="#a5f3fc" stroke-width="5"/><rect x="-38" y="-72" width="76" height="128" rx="38" fill="#22d3ee"/><path d="M-72 16c0 90 144 90 144 0M0 104v48M-52 152h104" fill="none" stroke="#cffafe" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <g fill="#cffafe" font-family="Inter,Arial,sans-serif" font-size="18" font-weight="600"><text x="84" y="548">BOOKINGS</text><text x="205" y="548">FAQS</text><text x="275" y="548">CALL SUMMARIES</text><text x="452" y="548">HUMAN HANDOFF</text></g>
+</svg>

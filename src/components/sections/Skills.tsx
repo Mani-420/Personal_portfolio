@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { skills } from '../../data/skills';
 import { AnimatedElement, StaggeredContainer } from '../shared/AnimatedElement';
 
+type SkillCategory = 'frontend' | 'backend' | 'ai' | 'tools';
+
 const Skills = () => {
-  const [activeCategory, setActiveCategory] = useState<
-    'frontend' | 'backend' | 'tools'
-  >('frontend');
+  const [activeCategory, setActiveCategory] = useState<SkillCategory>('ai');
   const [barsAnimated, setBarsAnimated] = useState(false);
 
   useEffect(() => {
@@ -27,9 +27,10 @@ const Skills = () => {
     return () => clearTimeout(timer);
   }, [activeCategory]);
 
-  const categories = [
+  const categories: { id: SkillCategory; name: string; icon: string }[] = [
     { id: 'frontend', name: 'Frontend', icon: '🎨' },
     { id: 'backend', name: 'Backend', icon: '⚙️' },
+    { id: 'ai', name: 'AI Engineering', icon: '🧠' },
     { id: 'tools', name: 'Tools & Others', icon: '🛠️' }
   ];
 
@@ -53,6 +54,11 @@ const Skills = () => {
       MySQL: '🐬',
       'RESTful APIs': '🔗',
       'JWT Authentication': '🔐',
+      'AI Agents': '🤖',
+      'LLM Integration': '✨',
+      'RAG & Vector Search': '🔎',
+      'Voice AI': '🎙️',
+      FastAPI: '⚡',
       Git: '📝',
       GitHub: '🐙',
       'C++': '⚡',
@@ -76,8 +82,7 @@ const Skills = () => {
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-primary-600 to-secondary-600 mx-auto rounded-full mb-6"></div>
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            I've worked with a variety of technologies in web development. Here
-            are the main technologies I use to bring ideas to life.
+            My toolkit covers modern product engineering from interface to infrastructure, with a growing focus on applied AI agents and voice automation.
           </p>
         </AnimatedElement>
 
@@ -88,11 +93,11 @@ const Skills = () => {
           delay={200}
           className="flex justify-center mb-12"
         >
-          <div className="bg-gray-100 dark:bg-dark-700 rounded-lg p-1 flex">
+          <div className="bg-gray-100 dark:bg-dark-700 rounded-lg p-1 flex flex-wrap justify-center">
             {categories.map((category) => (
               <button
                 key={category.id}
-                onClick={() => setActiveCategory(category.id as any)}
+                onClick={() => setActiveCategory(category.id)}
                 className={`px-6 py-3 rounded-md font-medium transition-all duration-200 ease-out hover:scale-105 active:scale-95 flex items-center space-x-2 ${
                   activeCategory === category.id
                     ? 'bg-white dark:bg-dark-600 text-primary-600 dark:text-primary-400 shadow-md'
@@ -109,7 +114,7 @@ const Skills = () => {
         {/* Skills Grid */}
         <StaggeredContainer
           staggerDelay={80}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
         >
           {filteredSkills.map((skill) => (
             <div
@@ -150,7 +155,7 @@ const Skills = () => {
         {/* Skills Summary */}
         <StaggeredContainer
           staggerDelay={150}
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           <div className="text-center p-6 rounded-lg hover:shadow-2xl transition-all duration-300 ease-out hover:scale-105 cursor-pointer hover:-translate-y-1">
             <div className="text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2 transition-all duration-200 hover:scale-110">
@@ -161,6 +166,18 @@ const Skills = () => {
             </div>
             <div className="text-gray-600 dark:text-gray-400">
               Modern UI/UX development
+            </div>
+          </div>
+
+          <div className="text-center p-6 rounded-lg hover:shadow-2xl transition-all duration-300 ease-out hover:scale-105 cursor-pointer hover:-translate-y-1">
+            <div className="text-4xl font-bold text-violet-600 dark:text-violet-400 mb-2 transition-all duration-200 hover:scale-110">
+              {skills.filter((s) => s.category === 'ai').length}
+            </div>
+            <div className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-1">
+              AI Engineering Skills
+            </div>
+            <div className="text-gray-600 dark:text-gray-400">
+              Agents, RAG & voice AI
             </div>
           </div>
 
