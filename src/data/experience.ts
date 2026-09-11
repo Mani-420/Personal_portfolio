@@ -3,19 +3,32 @@ import { Experience } from '../types';
 export const experiences: Experience[] = [
   {
     id: '1',
-    title: 'Backend Intern · Full-Stack Engineering Track',
+    title: 'Full Stack & AI Engineer',
     company: 'Hatzs Dimensions',
-    period: 'Aug 2025 - Present',
+    period: 'Nov 2025 - Present',
     responsibilities: [
-      'Contributed to scalable product systems including Befer AI and DealerIQ',
-      'Built and supported features with React, Next.js, Express, Fastify, and MySQL',
-      'Worked with product integrations including Stripe, QuickBooks, and email editors',
-      'Collaborated through code reviews, team planning, debugging, and production delivery',
-      'Expanding into applied AI engineering, conversational agents, and voice workflows'
+      'Designing and shipping scalable full-stack systems across Social Hub, Befer, DealerIQ, and Studiloom',
+      'Building AI-powered call and chat agents, conversational workflows, and product integrations',
+      'Improving application performance and scalability with Redis caching and optimized backend services',
+      'Developing production features with React, Next.js, Node.js, Express, Fastify, and MySQL',
+      'Owning features from technical planning and implementation through testing, code review, and deployment'
     ]
   },
   {
     id: '2',
+    title: 'Backend Intern · Full-Stack Engineering Track',
+    company: 'Hatzs Dimensions',
+    period: 'Aug 2025 - Oct 2025',
+    responsibilities: [
+      'Contributed to production features across frontend and backend applications',
+      'Built and supported features with React, Next.js, Express, Fastify, and MySQL',
+      'Worked with integrations including Stripe, QuickBooks, and email editors',
+      'Collaborated through code reviews, team planning, debugging, and production delivery',
+      'Developed a strong foundation in scalable systems and applied AI engineering'
+    ]
+  },
+  {
+    id: '3',
     title: 'Freelance Web Developer',
     company: 'Self-Employed',
     period: 'Feb 2024 - Present',
@@ -28,7 +41,7 @@ export const experiences: Experience[] = [
     ]
   },
   {
-    id: '3',
+    id: '4',
     title: 'Web Developer',
     company: 'Smart World',
     period: 'Nov 2023 - Jan 2025',

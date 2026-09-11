@@ -12,9 +12,14 @@ const Contact = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error';
+    message: string;
+  } | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    setSubmitStatus(null);
     setFormData(prev => ({
       ...prev,
       [name]: value
@@ -24,23 +29,47 @@ const Contact = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
-    
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
-    
-    setIsSubmitting(false);
-    alert('Thank you for your message! I will get back to you soon.');
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${contactInfo.email}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify({
+          ...formData,
+          _subject: `Portfolio message: ${formData.subject}`,
+          _template: 'table'
+        })
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || result.success === false || result.success === 'false') {
+        throw new Error(result.message || 'The message could not be delivered.');
+      }
+
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+      setSubmitStatus({
+        type: 'success',
+        message: 'Your message was sent successfully. I will get back to you soon!'
+      });
+    } catch (error) {
+      console.error('Contact form submission failed:', error);
+      setSubmitStatus({
+        type: 'error',
+        message: `Your message could not be sent. Please email me directly at ${contactInfo.email}.`
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactMethods = [
@@ -248,6 +277,20 @@ const Contact = () => {
                   </>
                 )}
               </button>
+
+              {submitStatus && (
+                <p
+                  role="status"
+                  aria-live="polite"
+                  className={`text-sm text-center font-medium ${
+                    submitStatus.type === 'success'
+                      ? 'text-green-600 dark:text-green-400'
+                      : 'text-red-600 dark:text-red-400'
+                  }`}
+                >
+                  {submitStatus.message}
+                </p>
+              )}
             </form>
           </AnimatedElement>
         </div>
