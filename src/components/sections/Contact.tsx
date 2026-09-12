@@ -46,9 +46,18 @@ const Contact = () => {
       });
 
       const result = await response.json();
+      const serviceMessage = typeof result.message === 'string' ? result.message : '';
 
       if (!response.ok || result.success === false || result.success === 'false') {
-        throw new Error(result.message || 'The message could not be delivered.');
+        if (serviceMessage.toLowerCase().includes('activation')) {
+          setSubmitStatus({
+            type: 'error',
+            message: 'This contact form is awaiting one-time activation. Please email me directly while setup is completed.'
+          });
+          return;
+        }
+
+        throw new Error(serviceMessage || 'The message could not be delivered.');
       }
 
       setFormData({
