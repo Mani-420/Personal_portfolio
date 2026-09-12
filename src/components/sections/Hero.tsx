@@ -7,8 +7,8 @@ const Hero = () => {
   const handleDownloadCV = () => {
     // Create a link element and trigger download
     const link = document.createElement('a');
-    link.href = '/CV/Abdul_FullStack.pdf'; // Using the full stack CV
-    link.download = 'Abdul_Rehman_FullStack_CV.pdf';
+    link.href = '/CV/AbdulRehman-CV.pdf';
+    link.download = 'AbdulRehman-CV.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -145,9 +145,9 @@ const Hero = () => {
             <div className="relative transition-transform duration-200 ease-out hover:scale-105">
               <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-primary-200 dark:border-primary-800 shadow-2xl">
                 <img
-                  src="/Git_Profile.png"
+                  src="/abdulPic2.png"
                   alt="Abdul Rehman Tahir"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-center"
                 />
               </div>
               
